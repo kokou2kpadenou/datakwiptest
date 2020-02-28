@@ -1,3 +1,20 @@
+![Datakwip Logo](Datakwip_logo.png)
+
+# Datakwip Frontend Test
+
+The Task:
+Datakwip is looking for a new frontend engineer to take our cloud platform to the next level. This engineer would rebuild our current html, CSS, and JavaScript web application with newer technology such as React or Vue.
+
+This test app is designed to be a straightforward in order to make sure our applicants can code React or Vue.
+
+The App:
+The app will be a single page that is split vertically into two parts. On the left, there will be an area to type information, and on the right will be results. The idea of this app is that a user can select a template drop a drop down, enter some information, and then hit submit. Once submitted, the app will render the information submitted on a graphic, chart, kpi, etc. on the right side of the screen. The user should be able to enter the same info, select a different template and see that information displayed with the new template on the right side. Besides the above functionality written above, the only other requirements are that it is written in React or Vue and that you have a minimum of 3 template options. When it comes to rendering a graphic, I recommend a free chart library such as
+AmCharts, Chart.js, etc. We are trying to keep the requirements to a minimum so that your creativity in coding will show.
+
+Below I have a sample wireframe of the application. to change it up however you see fit.
+
+![sample wireframe](sample_wireframe.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
