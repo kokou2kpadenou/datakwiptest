@@ -26,8 +26,7 @@ const Dialog = ({ title, id, children }) => {
 
 Dialog.propTypes = {
   title: PropTypes.string.isRequired,
-  id: PropTypes.any.isRequired,
-  children: PropTypes.element.isRequired
+  id: PropTypes.any.isRequired
 };
 
 export default Dialog;

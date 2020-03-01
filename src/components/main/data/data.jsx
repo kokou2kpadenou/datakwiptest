@@ -4,11 +4,16 @@ import Pagination from "../../commun/table/pagination";
 import DataTable from "./dataTable";
 import Dialog from "../../commun/dialog";
 import DataForm from "../data/dataForm";
+import WarningMsg from "./warningMsg";
+import Buttons from "./buttons";
 
 import { paginate } from "../../../utils";
 
 const Data = ({ state, dispatch }) => {
+  //
+  const [warning, setWarning] = useState({ msg: "", handleConfirm: () => {} });
   const [element, setElement] = useState({ label: "", data: "" });
+
   const handlePageChange = page => {
     dispatch({ type: "PAGE_CHANGE", payload: page });
   };
@@ -52,31 +57,15 @@ const Data = ({ state, dispatch }) => {
         />
       </Dialog>
 
-      <div className="mt-3">
-        <button
-          type="button"
-          className="btn btn-primary mr-2 mb-3"
-          data-toggle="modal"
-          data-target="#newdata-dlg"
-          onClick={() => setElement({ label: "", data: "" })}
-        >
-          Add
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning mr-2 mb-3"
-          onClick={() => dispatch({ type: "RESET_ALL_ELEMENTS" })}
-        >
-          Sample
-        </button>
-        <button
-          type="button"
-          className="btn btn-danger mb-3"
-          onClick={() => dispatch({ type: "CLEAR_ALL_ELEMENTS" })}
-        >
-          Clear Table
-        </button>
-      </div>
+      <WarningMsg data={warning} />
+
+      <Buttons
+        setElement={setElement}
+        setWarning={setWarning}
+        dispatch={dispatch}
+        numberElement={state.elements.length}
+      />
+
       <div style={{ minHeight: "400px" }}>
         <DataTable
           datas={elements}
