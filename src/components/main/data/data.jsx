@@ -55,19 +55,26 @@ const Data = ({ state, dispatch }) => {
       <div className="mt-3">
         <button
           type="button"
-          className="btn btn-primary mr-3 mb-3"
+          className="btn btn-primary mr-2 mb-3"
           data-toggle="modal"
           data-target="#newdata-dlg"
           onClick={() => setElement({ label: "", data: "" })}
         >
-          Add Data
+          Add
+        </button>
+        <button
+          type="button"
+          className="btn btn-warning mr-2 mb-3"
+          onClick={() => dispatch({ type: "RESET_ALL_ELEMENTS" })}
+        >
+          Sample
         </button>
         <button
           type="button"
           className="btn btn-danger mb-3"
           onClick={() => dispatch({ type: "CLEAR_ALL_ELEMENTS" })}
         >
-          Clear Data Table
+          Clear Table
         </button>
       </div>
       <div style={{ minHeight: "400px" }}>
