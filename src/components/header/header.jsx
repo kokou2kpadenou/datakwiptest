@@ -4,7 +4,7 @@ import logo from "./Datakwip_logo.png";
 const Header = () => {
   return (
     <header className="bg-light p-4 mb-4">
-      <h1 className="d-flex align-items-center">
+      <h1 className="main-tittle d-flex align-items-center">
         <img
           className="mr-4"
           style={{ width: "60px" }}
