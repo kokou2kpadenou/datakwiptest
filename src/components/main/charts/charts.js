@@ -3,14 +3,14 @@ import { Polar, Doughnut, Bar, Line, HorizontalBar } from "react-chartjs-2";
 import logo from "./Datakwip_logo_gray.png";
 import { getRandomColorHex } from "../../../utils";
 
-const Charts = ({ state }) => {
-  if (state.elements.length <= 0) return <Default>No Data!</Default>;
+const Charts = ({ elements, currentTemplate }) => {
+  if (elements.length <= 0) return <Default>No Data!</Default>;
   const data = {
-    labels: state.elements.map(element => element.label),
+    labels: elements.map(element => element.label),
     datasets: [
       {
-        data: state.elements.map(element => element.data),
-        backgroundColor: state.elements.map(() => getRandomColorHex())
+        data: elements.map(element => element.data),
+        backgroundColor: elements.map(() => getRandomColorHex())
       }
     ]
   };
@@ -21,7 +21,7 @@ const Charts = ({ state }) => {
     }
   };
 
-  switch (state.currentTemplate) {
+  switch (currentTemplate) {
     case "Polar":
       return (
         <ChartLayout title="Polar">

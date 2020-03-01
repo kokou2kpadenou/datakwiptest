@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/js/bootstrap.bundle";
 import Data from "./data/data";
 import Select from "./select";
 import Charts from "./charts/charts";
@@ -16,7 +17,10 @@ const Main = ({ state, dispatch }) => {
           <Data state={state} dispatch={dispatch} />
         </section>
         <section className="col-12 col-lg-6 p-3">
-          <Charts state={state} />
+          <Charts
+            elements={state.elements}
+            currentTemplate={state.currentTemplate}
+          />
         </section>
       </div>
     </main>
