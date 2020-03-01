@@ -68,11 +68,7 @@ const ChartLayout = ({ title, children }) => (
 const Default = ({ children }) => (
   <ChartLayout>
     <div className="text-center">
-      <img
-        src={logo}
-        style={{ width: "100px", height: "90px" }}
-        alt="No Data / No template"
-      />
+      <img className="w-75" src={logo} alt="No Data / No template" />
       <h5 className="text-secondary">{children}</h5>
     </div>
   </ChartLayout>
