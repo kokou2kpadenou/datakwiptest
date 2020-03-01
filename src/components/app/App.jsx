@@ -17,9 +17,24 @@ const App = () => {
   }, [state]);
 
   return (
-    <div className="">
+    <div>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div
+            style={{
+              minHeight: "610px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#007bff",
+              fontSize: "2rem"
+            }}
+          >
+            Loading...
+          </div>
+        }
+      >
         <Main state={state} dispatch={dispatch} />
       </Suspense>
       <Footer />
