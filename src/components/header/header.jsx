@@ -7,7 +7,7 @@ const Header = () => {
       <h1 className="d-flex align-items-center">
         <img
           className="mr-4"
-          style={{ width: "60px", height: "48.6px" }}
+          style={{ width: "60px" }}
           src={logo}
           alt="Datakwip logo"
         />
