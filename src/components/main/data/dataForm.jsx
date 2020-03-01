@@ -37,6 +37,11 @@ class DataForm extends Form {
         : { type: "ADD_ELEMENT", payload: this.state.data };
 
     this.props.dispatch(action);
+    this.setState({
+      data: { label: "", data: "" },
+      errors: {},
+      update: false
+    });
   };
 
   render() {
