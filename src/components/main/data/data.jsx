@@ -19,7 +19,11 @@ const Data = ({ state, dispatch }) => {
   };
 
   const handleDelete = elementID => {
-    dispatch({ type: "DELETE_ELEMENT", payload: elementID });
+    setWarning({
+      msg: `This action will delete permanently "${elementID}". Do you want to continue?`,
+      handleConfirm: () =>
+        dispatch({ type: "DELETE_ELEMENT", payload: elementID })
+    });
   };
 
   const handleSort = sortColumn => {

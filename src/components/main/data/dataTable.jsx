@@ -30,6 +30,8 @@ class DataTable extends Component {
         <button
           type="button"
           className="btn btn-danger"
+          data-toggle="modal"
+          data-target="#warning-dlg"
           onClick={() => this.props.onDelete(data.label)}
         >
           Detele
