@@ -1,10 +1,11 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, lazy, Suspense } from "react";
 
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import Main from "../main/main";
 
 import { initialState, reducer } from "./reducer";
+
+const Main = lazy(() => import("../main/main"));
 
 const localState = JSON.parse(localStorage.getItem("state"));
 
@@ -18,7 +19,9 @@ const App = () => {
   return (
     <div className="">
       <Header />
-      <Main state={state} dispatch={dispatch} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Main state={state} dispatch={dispatch} />
+      </Suspense>
       <Footer />
     </div>
   );
