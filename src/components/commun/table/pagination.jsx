@@ -2,6 +2,8 @@ import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 
+import { IconLeft, IconRight } from "../icon";
+
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const pages = _.range(1, totalPages + 1);
 
@@ -54,24 +56,3 @@ Pagination.propTypes = {
 };
 
 export default Pagination;
-
-const style = {
-  display: "inline-block",
-  width: "1em",
-  height: "1em",
-  strokeWidth: "0",
-  stroke: "currentColor",
-  fill: "currentColor"
-};
-
-const IconLeft = () => (
-  <svg style={style} viewBox="0 0 21 28">
-    <path d="M18.297 4.703l-8.297 8.297 8.297 8.297c0.391 0.391 0.391 1.016 0 1.406l-2.594 2.594c-0.391 0.391-1.016 0.391-1.406 0l-11.594-11.594c-0.391-0.391-0.391-1.016 0-1.406l11.594-11.594c0.391-0.391 1.016-0.391 1.406 0l2.594 2.594c0.391 0.391 0.391 1.016 0 1.406z"></path>
-  </svg>
-);
-
-const IconRight = () => (
-  <svg style={style} viewBox="0 0 21 28">
-    <path d="M17.297 13.703l-11.594 11.594c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.594c-0.391-0.391-0.391-1.016 0-1.406l8.297-8.297-8.297-8.297c-0.391-0.391-0.391-1.016 0-1.406l2.594-2.594c0.391-0.391 1.016-0.391 1.406 0l11.594 11.594c0.391 0.391 0.391 1.016 0 1.406z"></path>
-  </svg>
-);
