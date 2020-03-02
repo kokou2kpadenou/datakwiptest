@@ -10,7 +10,7 @@ class DataTable extends Component {
       content: data => (
         <button
           type="button"
-          className="btn btn-link"
+          className="btn btn-link d-flex align-items-center"
           data-toggle="modal"
           data-target="#newdata-dlg"
           onClick={() => {
@@ -18,14 +18,14 @@ class DataTable extends Component {
           }}
         >
           <span
-            className="d-inline-block rounded-circle mr-2"
+            className="rounded-circle mr-2"
             style={{
               width: "1em",
               height: "1em",
               backgroundColor: data.bgColor
             }}
           ></span>
-          {data.label}
+          <span>{data.label}</span>
         </button>
       )
     },
@@ -42,7 +42,7 @@ class DataTable extends Component {
           data-target="#warning-dlg"
           onClick={() => this.props.onDelete(data.label)}
         >
-          Detele
+          Delete
         </button>
       )
     }
