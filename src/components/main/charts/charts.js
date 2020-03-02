@@ -1,7 +1,7 @@
 import React from "react";
 import { Polar, Doughnut, Bar, Line, HorizontalBar } from "react-chartjs-2";
+
 import logo from "./Datakwip_logo_gray.png";
-import { getRandomColorHex } from "../../../utils";
 
 const Charts = ({ elements, currentTemplate }) => {
   if (elements.length <= 0) return <Default>No Data!</Default>;
@@ -10,7 +10,7 @@ const Charts = ({ elements, currentTemplate }) => {
     datasets: [
       {
         data: elements.map(element => element.data),
-        backgroundColor: elements.map(() => getRandomColorHex())
+        backgroundColor: elements.map(element => element.bgColor)
       }
     ]
   };
@@ -25,31 +25,31 @@ const Charts = ({ elements, currentTemplate }) => {
     case "Polar":
       return (
         <ChartLayout title="Polar">
-          <Polar data={data} />
+          <Polar data={data} height={300} />
         </ChartLayout>
       );
     case "Daughnut":
       return (
         <ChartLayout title="Daughnut">
-          <Doughnut data={data} />
+          <Doughnut data={data} height={300} />
         </ChartLayout>
       );
     case "Bar":
       return (
         <ChartLayout title="Bar">
-          <Bar data={data} options={options} />
+          <Bar data={data} options={options} height={300} />
         </ChartLayout>
       );
     case "Line":
       return (
         <ChartLayout title="Line">
-          <Line data={data} options={options} />
+          <Line data={data} options={options} height={300} />
         </ChartLayout>
       );
     case "HorizontalBar":
       return (
         <ChartLayout title="Horizontal Bar">
-          <HorizontalBar data={data} options={options} />
+          <HorizontalBar data={data} options={options} height={300} />
         </ChartLayout>
       );
     default:

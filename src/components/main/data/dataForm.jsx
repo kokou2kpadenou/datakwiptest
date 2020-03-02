@@ -10,6 +10,7 @@ class DataForm extends Form {
   };
 
   schema = {
+    bgColor: Joi.string(),
     label: Joi.string()
       .required()
       .label("Label"),

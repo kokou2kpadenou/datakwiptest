@@ -17,6 +17,14 @@ class DataTable extends Component {
             this.props.setElement(data);
           }}
         >
+          <span
+            className="d-inline-block rounded-circle mr-2"
+            style={{
+              width: "1em",
+              height: "1em",
+              backgroundColor: data.bgColor
+            }}
+          ></span>
           {data.label}
         </button>
       )
