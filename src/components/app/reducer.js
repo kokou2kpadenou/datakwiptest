@@ -31,7 +31,8 @@ export const initialState = {
   graphics: [],
   pageSize: 5,
   currentPage: 1,
-  sortColumn: { path: "label", order: "asc" }
+  sortColumn: { path: "label", order: "asc" },
+  warning: { msg: "", handleConfirm: () => {} }
 };
 
 export const reducer = (state, action) => {
@@ -97,6 +98,9 @@ export const reducer = (state, action) => {
 
     case "PAGE_CHANGE":
       return { ...state, currentPage: action.payload };
+
+    case "SET_WARNING":
+      return { ...state, warning: { ...action.payload } };
 
     default:
       throw new Error();
