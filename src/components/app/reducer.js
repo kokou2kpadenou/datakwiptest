@@ -1,4 +1,4 @@
-import { getRandomColorHex } from "../../utils";
+import { getRandomColorHex, autoGenID } from "../../utils";
 
 const initialElements = [
   { label: "Baltimore", data: 614700, bgColor: "#1402FF" },
@@ -19,6 +19,7 @@ const initialElements = [
 
 export const initialState = {
   currentTemplate: "",
+  description: "",
   templates: [
     { code: "Polar", desc: "Polar" },
     { code: "Daughnut", desc: "Daughnut" },
@@ -27,6 +28,7 @@ export const initialState = {
     { code: "HorizontalBar", desc: "Horizontal Bar" }
   ],
   elements: [...initialElements],
+  graphics: [],
   pageSize: 5,
   currentPage: 1,
   sortColumn: { path: "label", order: "asc" }
@@ -34,6 +36,8 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case "DESCRIPTION_CHANGE":
+      return { ...state, description: action.payload };
     case "CHANGE_TEMPLATE":
       return { ...state, currentTemplate: action.payload };
 
@@ -67,6 +71,26 @@ export const reducer = (state, action) => {
 
     case "CLEAR_ALL_ELEMENTS":
       return { ...state, elements: [] };
+
+    case "ADD_GRAPHIC":
+      return {
+        ...state,
+        graphics: [
+          ...state.graphics,
+          { ...action.payload, id: autoGenID("graph") }
+        ]
+      };
+
+    case "DELETE_GRAPHIC":
+      return {
+        ...state,
+        graphics: state.graphics.filter(
+          graphic => graphic.id !== action.payload
+        )
+      };
+
+    case "CLEAR_GRAPHICS":
+      return { ...state, graphics: [] };
 
     case "CHANGE_SORT":
       return { ...state, sortColumn: action.payload };
