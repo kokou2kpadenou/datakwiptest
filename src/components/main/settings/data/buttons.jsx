@@ -1,6 +1,6 @@
 import React from "react";
 
-const Buttons = ({ setElement, setWarning, dispatch, numberElement }) => (
+const Buttons = ({ setElement, dispatch, numberElement }) => (
   <div className="mt-3">
     <button
       type="button"
@@ -19,10 +19,13 @@ const Buttons = ({ setElement, setWarning, dispatch, numberElement }) => (
       data-target={numberElement ? "#warning-dlg" : ""}
       onClick={() => {
         if (numberElement) {
-          setWarning({
-            msg:
-              "This action will replace your data with a sample of data and you will permanently lose your data. Do you want to continue?",
-            handleConfirm: () => dispatch({ type: "RESET_ALL_ELEMENTS" })
+          dispatch({
+            type: "SET_WARNING",
+            payload: {
+              msg:
+                "This action will replace your data with a sample of data and you will permanently lose your data. Do you want to continue?",
+              handleConfirm: () => dispatch({ type: "RESET_ALL_ELEMENTS" })
+            }
           });
         } else {
           dispatch({ type: "RESET_ALL_ELEMENTS" });
@@ -39,10 +42,13 @@ const Buttons = ({ setElement, setWarning, dispatch, numberElement }) => (
       data-toggle="modal"
       data-target="#warning-dlg"
       onClick={() =>
-        setWarning({
-          msg:
-            "This action will empty the data table and you will permanently lose your data. Do you want to continue?",
-          handleConfirm: () => dispatch({ type: "CLEAR_ALL_ELEMENTS" })
+        dispatch({
+          type: "SET_WARNING",
+          payload: {
+            msg:
+              "This action will empty the data table and you will permanently lose your data. Do you want to continue?",
+            handleConfirm: () => dispatch({ type: "CLEAR_ALL_ELEMENTS" })
+          }
         })
       }
     >
