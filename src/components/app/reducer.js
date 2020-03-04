@@ -1,7 +1,6 @@
 import { getRandomColorHex, autoGenID } from "../../utils";
 
 const initialElements = [
-  { label: "Baltimore", data: 614700, bgColor: "#1402FF" },
   { label: "Columbia", data: 103663, bgColor: "#533182" },
   { label: "Germantown", data: 90844, bgColor: "#C1426F" },
   { label: "Silver Spring", data: 79750, bgColor: "#687601" },
