@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import _ from "lodash";
-import Pagination from "../../commun/table/pagination";
+import Pagination from "../../../commun/table/pagination";
 import DataTable from "./dataTable";
-import Dialog from "../../commun/dialog";
+import Dialog from "../../../commun/dialog";
 import DataForm from "../data/dataForm";
-import WarningMsg from "./warningMsg";
 import Buttons from "./buttons";
 
-import { paginate } from "../../../utils";
+import { paginate } from "../../../../utils";
 
 const Data = ({ state, dispatch }) => {
   //
-  const [warning, setWarning] = useState({ msg: "", handleConfirm: () => {} });
+
   const [element, setElement] = useState({ label: "", data: "" });
 
   const handlePageChange = page => {
@@ -19,10 +18,13 @@ const Data = ({ state, dispatch }) => {
   };
 
   const handleDelete = elementID => {
-    setWarning({
-      msg: `This action will delete permanently "${elementID}". Do you want to continue?`,
-      handleConfirm: () =>
-        dispatch({ type: "DELETE_ELEMENT", payload: elementID })
+    dispatch({
+      type: "SET_WARNING",
+      payload: {
+        msg: `This action will delete permanently "${elementID}". Do you want to continue?`,
+        handleConfirm: () =>
+          dispatch({ type: "DELETE_ELEMENT", payload: elementID })
+      }
     });
   };
 
@@ -61,16 +63,13 @@ const Data = ({ state, dispatch }) => {
         />
       </Dialog>
 
-      <WarningMsg data={warning} />
-
       <Buttons
         setElement={setElement}
-        setWarning={setWarning}
         dispatch={dispatch}
         numberElement={state.elements.length}
       />
 
-      <div style={{ minHeight: "400px" }}>
+      <div style={{ minHeight: "380px" }}>
         <DataTable
           datas={elements}
           sortColumn={state.sortColumn}

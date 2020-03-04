@@ -1,7 +1,6 @@
-import { getRandomColorHex } from "../../utils";
+import { getRandomColorHex, autoGenID } from "../../utils";
 
 const initialElements = [
-  { label: "Baltimore", data: 614700, bgColor: "#1402FF" },
   { label: "Columbia", data: 103663, bgColor: "#533182" },
   { label: "Germantown", data: 90844, bgColor: "#C1426F" },
   { label: "Silver Spring", data: 79750, bgColor: "#687601" },
@@ -19,6 +18,7 @@ const initialElements = [
 
 export const initialState = {
   currentTemplate: "",
+  description: "",
   templates: [
     { code: "Polar", desc: "Polar" },
     { code: "Daughnut", desc: "Daughnut" },
@@ -27,13 +27,17 @@ export const initialState = {
     { code: "HorizontalBar", desc: "Horizontal Bar" }
   ],
   elements: [...initialElements],
+  graphics: [],
   pageSize: 5,
   currentPage: 1,
-  sortColumn: { path: "label", order: "asc" }
+  sortColumn: { path: "label", order: "asc" },
+  warning: { msg: "", handleConfirm: () => {} }
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case "DESCRIPTION_CHANGE":
+      return { ...state, description: action.payload };
     case "CHANGE_TEMPLATE":
       return { ...state, currentTemplate: action.payload };
 
@@ -68,11 +72,37 @@ export const reducer = (state, action) => {
     case "CLEAR_ALL_ELEMENTS":
       return { ...state, elements: [] };
 
+    case "RELOAD_ELEMENTS":
+      return { ...state, elements: [...action.payload] };
+
+    case "ADD_GRAPHIC":
+      return {
+        ...state,
+        graphics: [
+          ...state.graphics,
+          { ...action.payload, id: autoGenID("graph") }
+        ]
+      };
+
+    case "DELETE_GRAPHIC":
+      return {
+        ...state,
+        graphics: state.graphics.filter(
+          graphic => graphic.id !== action.payload
+        )
+      };
+
+    case "CLEAR_GRAPHICS":
+      return { ...state, graphics: [] };
+
     case "CHANGE_SORT":
       return { ...state, sortColumn: action.payload };
 
     case "PAGE_CHANGE":
       return { ...state, currentPage: action.payload };
+
+    case "SET_WARNING":
+      return { ...state, warning: { ...action.payload } };
 
     default:
       throw new Error();

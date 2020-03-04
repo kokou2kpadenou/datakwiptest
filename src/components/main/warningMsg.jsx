@@ -1,5 +1,5 @@
 import React from "react";
-import Dialog from "../../commun/dialog";
+import Dialog from "../commun/dialog";
 
 const WarningMsg = ({ data }) => (
   <Dialog title="Warning" id="warning">

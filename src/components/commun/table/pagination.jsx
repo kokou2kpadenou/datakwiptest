@@ -10,7 +10,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   if (totalPages <= 1) return null;
 
   return (
-    <nav className="mt-3">
+    <nav className="mb-5">
       <ul className="pagination">
         <li className={currentPage === 1 ? "page-item disabled" : "page-item"}>
           <button

@@ -10,11 +10,33 @@ const Main = lazy(() => import("../main/main"));
 const localState = JSON.parse(localStorage.getItem("state"));
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, localState || initialState);
+  const options = {
+    currentTemplate: "",
+    description: "",
+    templates: [
+      { code: "Polar", desc: "Polar" },
+      { code: "Daughnut", desc: "Daughnut" },
+      { code: "Bar", desc: "Bar" },
+      { code: "Line", desc: "Line" },
+      { code: "HorizontalBar", desc: "Horizontal Bar" }
+    ],
+    pageSize: 5,
+    currentPage: 1,
+    sortColumn: { path: "label", order: "asc" },
+    warning: { msg: "", handleConfirm: () => {} }
+  };
+
+  const [state, dispatch] = useReducer(
+    reducer,
+    localState ? { ...localState, ...options } : initialState
+  );
 
   useEffect(() => {
-    localStorage.setItem("state", JSON.stringify(state));
-  }, [state]);
+    localStorage.setItem(
+      "state",
+      JSON.stringify({ elements: state.elements, graphics: state.graphics })
+    );
+  }, [state.elements, state.graphics]);
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Table from "../../commun/table/table";
+import Table from "../../../commun/table/table";
 
 class DataTable extends Component {
   columns = [

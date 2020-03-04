@@ -1,6 +1,6 @@
 import React from "react";
 import Joi from "joi-browser";
-import Form from "../../commun/form/form";
+import Form from "../../../commun/form/form";
 
 class DataForm extends Form {
   state = {
