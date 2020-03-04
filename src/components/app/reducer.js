@@ -73,6 +73,9 @@ export const reducer = (state, action) => {
     case "CLEAR_ALL_ELEMENTS":
       return { ...state, elements: [] };
 
+    case "RELOAD_ELEMENTS":
+      return { ...state, elements: [...action.payload] };
+
     case "ADD_GRAPHIC":
       return {
         ...state,
