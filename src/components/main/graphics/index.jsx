@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useRef } from "react";
+import ReactToPrint from "react-to-print";
 import Charts from "./charts";
 
 const Graphics = ({ graphics, dispatch }) => {
+  const ref = useRef();
   if (!graphics.length) return <Charts />;
 
   return (
     <>
       <div className="mb-3">
-        <button
-          type="button"
-          className="btn btn-primary mr-2"
-          onClick={() => {}}
-        >
-          Print Graphics
-        </button>
+        <ReactToPrint
+          trigger={() => (
+            <button type="button" className="btn btn-primary mr-2">
+              Print Graphics
+            </button>
+          )}
+          content={() => ref.current}
+        />
+
         <button
           type="button"
           className="btn btn-danger mr-2"
@@ -33,9 +37,18 @@ const Graphics = ({ graphics, dispatch }) => {
           Clear All Graphics
         </button>
       </div>
-      {graphics.map(graphic => (
-        <Charts key={graphic.id} graphic={graphic} dispatch={dispatch} />
-      ))}
+      <div ref={ref}>
+        {graphics
+          .map((graphic, id) => (
+            <Charts
+              key={graphic.id}
+              graphic={graphic}
+              dispatch={dispatch}
+              order={id + 1}
+            />
+          ))
+          .reverse()}
+      </div>
     </>
   );
 };
