@@ -69,7 +69,7 @@ const Data = ({ state, dispatch }) => {
         numberElement={state.elements.length}
       />
 
-      <div style={{ minHeight: "400px" }}>
+      <div style={{ minHeight: "380px" }}>
         <DataTable
           datas={elements}
           sortColumn={state.sortColumn}

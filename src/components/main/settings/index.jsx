@@ -7,6 +7,9 @@ import SubmitButton from "./submitButton";
 const Setting = ({ state, dispatch }) => {
   return (
     <>
+      {/* Data Table */}
+      <Data state={state} dispatch={dispatch} />
+
       {/* Template Select */}
       <Select
         templates={state.templates}
@@ -16,9 +19,6 @@ const Setting = ({ state, dispatch }) => {
 
       {/* Description Input */}
       <DescInput description={state.description} dispatch={dispatch} />
-
-      {/* Data Table */}
-      <Data state={state} dispatch={dispatch} />
 
       {/* butttons submit */}
       <SubmitButton dispatch={dispatch} state={state} />

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Buttons = ({ setElement, dispatch, numberElement }) => (
-  <div className="mt-3">
+  <div>
     <button
       type="button"
       className="btn btn-primary mr-2 mb-3"
