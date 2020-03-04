@@ -4,7 +4,7 @@ const DescInput = ({ description, dispatch }) => {
   return (
     <div className="input-group mb-3">
       <div className="input-group-prepend">
-        <span className="input-group-text" id="basic-addon1">
+        <span className="input-group-text" id="description">
           Description
         </span>
       </div>
@@ -12,9 +12,9 @@ const DescInput = ({ description, dispatch }) => {
         type="text"
         value={description}
         className="form-control"
-        placeholder="Description"
-        aria-label="Description"
-        aria-describedby="Description"
+        placeholder="Graphic Description"
+        aria-label="Graphic Description"
+        aria-describedby="description"
         onChange={e =>
           dispatch({ type: "DESCRIPTION_CHANGE", payload: e.target.value })
         }
